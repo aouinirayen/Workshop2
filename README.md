@@ -62,19 +62,19 @@ SuggestionApp/
 ### ✅ Interface
 - Modèle de données `Suggestion` avec typage fort
 
-### ✅ Fonctionnalités Métier
+ ✅ Fonctionnalités Métier
 1. **Like** : Incrémente le nombre de likes
 2. **Favoris** : Ajoute une suggestion aux favoris
 3. **Recherche** : Filtre par titre ou catégorie
 4. **Statuts visuels** : Couleurs différentes selon le statut
 
-## 🎨 Statuts des Suggestions
+ 🎨 Statuts des Suggestions
 
 - 🟢 **Acceptée** : Bordure verte, boutons visibles
 - 🔴 **Refusée** : Bordure rouge, boutons cachés, opacité réduite
 - 🟠 **En attente** : Bordure orange, boutons visibles
 
-## 📚 Concepts Angular Utilisés
+📚 Concepts Angular Utilisés
 
 1. **Components** : Architecture modulaire
 2. **Modules** : Organisation avec NgModule
@@ -83,24 +83,13 @@ SuggestionApp/
 5. **Pipes** : date formatting
 6. **Forms** : FormsModule pour ngModel
 
-## 🔧 Prérequis
+ 🔧 Prérequis
 
 - Node.js (v18 ou supérieur)
 - npm (v9 ou supérieur)
 - Angular CLI (v18)
 
-## 📝 Notes
 
-- Architecture : **NgModule** (classique, non-standalone)
-- Pas de SSR (Server-Side Rendering)
-- Styles CSS natifs (pas de framework CSS)
 
-## 👨‍🎓 Workshop Universitaire
-
-**Année** : 2025-2026  
+ 
 **Workshop** : n°2 - Manipulation des Composants  
-**Objectifs** : Maîtriser les composants, le data binding et les directives Angular
-
----
-
-**Bon travail ! 🎉**
