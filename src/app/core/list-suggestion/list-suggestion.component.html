@@ -1,0 +1,76 @@
+<div class="container">
+  <h1>Liste des Suggestions</h1>
+
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input 
+      type="text" 
+      [(ngModel)]="searchText" 
+      placeholder="🔍 Rechercher par titre ou catégorie..."
+      class="search-input"
+    />
+  </div>
+
+  <!-- Liste des suggestions -->
+  <div class="suggestions-list">
+    <div 
+      *ngFor="let suggestion of getFilteredSuggestions()" 
+      class="suggestion-card"
+      [class.acceptee]="suggestion.status === 'acceptee'"
+      [class.refusee]="suggestion.status === 'refusee'"
+      [class.en-attente]="suggestion.status === 'en_attente'"
+    >
+      <!-- Titre -->
+      <h2>{{ suggestion.title }}</h2>
+      
+      <!-- Description -->
+      <p class="description">{{ suggestion.description }}</p>
+      
+      <!-- Informations -->
+      <div class="info">
+        <span class="category">📁 {{ suggestion.category }}</span>
+        <span class="date">📅 {{ suggestion.date | date:'dd/MM/yyyy' }}</span>
+        <span class="status">
+          Statut: 
+          <strong>{{ suggestion.status === 'acceptee' ? 'Acceptée' : suggestion.status === 'refusee' ? 'Refusée' : 'En attente' }}</strong>
+        </span>
+      </div>
+      
+      <!-- Likes -->
+      <div class="likes">
+        ❤️ {{ suggestion.nbLikes }} like(s)
+      </div>
+      
+      <!-- Boutons (cachés si statut = refusée) -->
+      <div class="actions" *ngIf="suggestion.status !== 'refusee'">
+        <button 
+          (click)="incrementLikes(suggestion)" 
+          class="btn btn-like"
+        >
+          👍 Like
+        </button>
+        <button 
+          (click)="addToFavorites(suggestion)" 
+          class="btn btn-favorite"
+        >
+          ⭐ Ajouter aux favoris
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message si aucune suggestion -->
+  <div *ngIf="getFilteredSuggestions().length === 0" class="no-results">
+    Aucune suggestion trouvée pour "{{ searchText }}".
+  </div>
+
+  <!-- Affichage des favoris -->
+  <div class="favorites-section" *ngIf="favorites.length > 0">
+    <h2>⭐ Mes Favoris ({{ favorites.length }})</h2>
+    <div class="favorites-list">
+      <div *ngFor="let fav of favorites" class="favorite-item">
+        {{ fav.title }}
+      </div>
+    </div>
+  </div>
+</div>
